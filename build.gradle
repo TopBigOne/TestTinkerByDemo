@@ -1,0 +1,29 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.3'
+    }
+    configurations.all {
+        it.resolutionStrategy.cacheDynamicVersionsFor(5, 'minutes')
+        it.resolutionStrategy.cacheChangingModulesFor(0, 'seconds')
+    }
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        jcenter()
+        google()
+    }
+}
+
+
+def is_gradle_3() {
+    return hasProperty('GRADLE_3') && GRADLE_3.equalsIgnoreCase('TRUE')
+}
+
+
