@@ -6,11 +6,47 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:background="#C65353"
-        android:padding="10dp"
-        android:text="@string/start_hot_fix" />
+        android:text="Sample patch!"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/requestPatch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:text="request patch"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/requestConfig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/requestPatch"
+        android:layout_alignParentStart="true"
+        android:text="request config"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/cleanPatch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/requestConfig"
+        android:layout_alignParentStart="true"
+        android:text="clean patch"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/killSelf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cleanPatch"
+        android:layout_alignParentStart="true"
+        android:text="kill self"
+        android:textAllCaps="false" />
+
 
 </RelativeLayout>
