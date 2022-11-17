@@ -1,4 +1,4 @@
-package tinker.sample.mybuglydemo;
+package tinker.sample.mybuglydemo.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +14,8 @@ import com.tinkerpatch.sdk.server.callback.ConfigRequestCallback;
 
 import java.util.HashMap;
 import java.util.Objects;
+
+import tinker.sample.mybuglydemo.R;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Tinker.MainActivity";

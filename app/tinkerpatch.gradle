@@ -14,9 +14,9 @@ def variantName = "debug"
 tinkerpatchSupport {
     /** 可以在debug的时候关闭 tinkerPatch **/
     /** 当disable tinker的时候需要添加multiDexKeepProguard和proguardFiles,
-        这些配置文件本身由tinkerPatch的插件自动添加，当你disable后需要手动添加
-        你可以copy本示例中的proguardRules.pro和tinkerMultidexKeep.pro,
-        需要你手动修改'tinker.sample.android.app'本示例的包名为你自己的包名, com.xxx前缀的包名不用修改
+     这些配置文件本身由tinkerPatch的插件自动添加，当你disable后需要手动添加
+     你可以copy本示例中的proguardRules.pro和tinkerMultidexKeep.pro,
+     需要你手动修改'tinker.sample.android.app'本示例的包名为你自己的包名, com.xxx前缀的包名不用修改
      **/
     tinkerEnable = true
     reflectApplication = false
@@ -51,12 +51,30 @@ tinkerpatchSupport {
      **/
 }
 
+def gitSha() {
+    try {
+        String gitRev = 'git rev-parse --short HEAD'.execute(null, project.rootDir).text.trim()
+        if (gitRev == null) {
+            throw new GradleException("can't get git rev, you should add git to system path or just input test value, such as 'testTinkerId'")
+        }
+        return gitRev
+    } catch (Exception e) {
+        throw new GradleException("can't get git rev, you should add git to system path or just input test value, such as 'testTinkerId'")
+    }
+}
+
+
+def getTinkerIdValue() {
+    return hasProperty("TINKER_ID") ? TINKER_ID : gitSha()
+}
+
 /**
  * 用于用户在代码中判断tinkerPatch是否被使能
  */
 android {
     defaultConfig {
         buildConfigField "boolean", "TINKER_ENABLE", "${tinkerpatchSupport.tinkerEnable}"
+        buildConfigField "String", "TINKER_ID", "\"${getTinkerIdValue()}\""
     }
 }
 
