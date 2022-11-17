@@ -13,17 +13,14 @@ android {
         versionCode 1
         versionName "1.0.0"
         multiDexEnabled true
+        //keep specific classes using proguard syntax
+        multiDexKeepProguard file("tinkerMultidexKeep.pro")
 
     }
-//
-//    viewBinding {
-//        enabled = true
-//    }
 
 
     buildTypes {
         release {
-
             minifyEnabled false
             multiDexKeepProguard file("tinker_multidexkeep.pro")
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -50,7 +47,7 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     implementation "com.android.support:multidex:1.0.2"
 
