@@ -4,7 +4,7 @@ apply plugin: 'tinkerpatch-support'
  * TODO: 请按自己的需求修改为适应自己工程的参数
  */
 def bakPath = file("${buildDir}/bakApk/")
-def baseInfo = "app-1.0.1-1117-20-50-26"
+def baseInfo = "app-1.0.2-1117-21-21-47"
 def variantName = "debug"
 
 /**
@@ -102,6 +102,7 @@ tinkerPatch {
     }
 
     packageConfig {
+        configField("platform", "all")
     }
     sevenZip {
         zipArtifact = "com.tencent.mm:SevenZip:1.1.10"

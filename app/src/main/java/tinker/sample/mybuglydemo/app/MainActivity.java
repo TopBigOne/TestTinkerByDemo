@@ -135,7 +135,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void testHotRealEnable() {
         Log.d(TAG, "testHotRealEnable:  -----1:package Name : " + getPackageName());
-      //  Log.d(TAG, "testHotRealEnable:  -----2");
+        Log.d(TAG, "testHotRealEnable:  -----2");
+        Log.d(TAG, "testHotRealEnable:  -----3");
     }
 
     private void askForRequiredPermissions() {
