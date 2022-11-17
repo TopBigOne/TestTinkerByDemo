@@ -19,7 +19,7 @@
 }
 
 #your dex.loader patterns here
--keep class tinker.sample.android.app.SampleApplication {
+-keep class com.bf.hot.fix.ymnApplication {
     <init>(...);
 }
 

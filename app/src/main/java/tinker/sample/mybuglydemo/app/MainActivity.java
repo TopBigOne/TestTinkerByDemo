@@ -17,6 +17,7 @@ import com.tinkerpatch.sdk.server.callback.ConfigRequestCallback;
 import java.util.HashMap;
 import java.util.Objects;
 
+import tinker.sample.mybuglydemo.BuildConfig;
 import tinker.sample.mybuglydemo.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         btnLoadLibrary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+               // testHotRealEnable();
             }
         });
 
@@ -109,6 +110,10 @@ public class MainActivity extends AppCompatActivity {
                 android.os.Process.killProcess(android.os.Process.myPid());
             }
         });
+    }
+
+    private void testHotRealEnable() {
+        Log.d(TAG, "testHotRealEnable:  -----1");
     }
 
 

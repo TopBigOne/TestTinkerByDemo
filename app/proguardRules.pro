@@ -52,5 +52,5 @@
 }
 
 #your dex.loader patterns here
--keep class tinker.sample.android.app.SampleApplication
+-keep class com.bf.hot.fix.ymnApplication
 -keep class com.tencent.tinker.loader.**
