@@ -4,6 +4,7 @@
     package="tinker.sample.mybuglydemo">
 
     <application
+        android:name="com.bf.hot.fix.ymnApplication"
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"

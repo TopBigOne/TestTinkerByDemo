@@ -33,6 +33,7 @@ import android.os.Build;
 
 import android.util.Log;
 
+
 import androidx.multidex.MultiDex;
 
 import com.tencent.tinker.anno.DefaultLifeCycle;
@@ -77,7 +78,7 @@ import java.util.HashMap;
  * Created by zhangshaowen on 16/3/17.
  */
 @SuppressWarnings("unused")
-@DefaultLifeCycle(application = "tinker.sample.android.app.SampleApplication",
+@DefaultLifeCycle(application = "com.bf.hot.fix.ymnApplication",
                   flags = ShareConstants.TINKER_ENABLE_ALL,
                   loadVerifyFlag = false)
 public class SampleApplicationLike extends DefaultApplicationLike {
