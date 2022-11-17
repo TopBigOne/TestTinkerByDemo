@@ -34,12 +34,13 @@ public class MainActivity extends AppCompatActivity {
     Button killSelfButton;
     Button btnLoadPatch;
     Button btnLoadLibrary;
+    Button btnShowInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Log.d(TAG, "onCreate:  -----:package Name : "+getPackageName());
+        Log.d(TAG, "onCreate:  -----:package Name : " + getPackageName());
         setContentView(R.layout.activity_main);
         initView();
         Log.e(TAG, "i am on onCreate classloader:" + Objects.requireNonNull(MainActivity.class.getClassLoader()));
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         requestConfigButton = (Button) findViewById(R.id.requestConfig);
         cleanPatchButton = (Button) findViewById(R.id.cleanPatch);
         killSelfButton = (Button) findViewById(R.id.killSelf);
+        btnShowInfo = (Button) findViewById(R.id.btn_show_info);
     }
 
     private void initEvent() {
@@ -72,10 +74,9 @@ public class MainActivity extends AppCompatActivity {
         btnLoadLibrary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               testHotRealEnable();
+                //                testHotRealEnable();
             }
         });
-
 
         //immediately 为 true, 每次强制访问服务器更新
         requestPatchButton.setOnClickListener(new View.OnClickListener() {
@@ -120,10 +121,19 @@ public class MainActivity extends AppCompatActivity {
                 android.os.Process.killProcess(android.os.Process.myPid());
             }
         });
+
+        btnShowInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DisplayApkInfo displayApkInfo = new DisplayApkInfo();
+                displayApkInfo.showInfo(MainActivity.this);
+
+            }
+        });
     }
 
     private void testHotRealEnable() {
-        Log.d(TAG, "testHotRealEnable:  -----1:package Name : "+getPackageName());
+        Log.d(TAG, "testHotRealEnable:  -----1:package Name : " + getPackageName());
         Log.d(TAG, "testHotRealEnable:  -----2");
     }
 
@@ -132,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         if (!hasRequiredPermissions()) {
-            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
         }
     }
 

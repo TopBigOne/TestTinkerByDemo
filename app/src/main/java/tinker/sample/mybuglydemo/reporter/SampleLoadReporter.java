@@ -43,6 +43,7 @@ public class SampleLoadReporter extends DefaultLoadReporter {
 
     @Override
     public void onLoadPatchListenerReceiveFail(final File patchFile, int errorCode) {
+        printLoadResult(patchFile, errorCode, -1);
         super.onLoadPatchListenerReceiveFail(patchFile, errorCode);
         SampleTinkerReport.onTryApplyFail(errorCode);
     }
@@ -70,6 +71,9 @@ public class SampleLoadReporter extends DefaultLoadReporter {
     }
 
     private void printLoadResult(File patchDirectory, int loadCode, long cost) {
+        if (patchDirectory != null) {
+            TinkerLog.i(TAG, "printLoadResult file path: " + patchDirectory.getAbsolutePath());
+        }
         TinkerLog.d(TAG, "printLoadResult: loadCode : " + loadCode + ", cost time : " + cost);
         if (loadCode == ShareConstants.ERROR_LOAD_OK) {
             TinkerLog.d(TAG, "printLoadResult: ERROR_LOAD_OK");
@@ -86,6 +90,11 @@ public class SampleLoadReporter extends DefaultLoadReporter {
         }
         if (loadCode == ShareConstants.ERROR_LOAD_PATCH_DIRECTORY_NOT_EXIST) {
             TinkerLog.e(TAG, "printLoadResult: ERROR_LOAD_PATCH_DIRECTORY_NOT_EXIST");
+            return;
+        }
+
+        if (loadCode == ShareConstants.ERROR_LOAD_PATCH_VERSION_RESOURCE_MD5_MISMATCH) {
+            TinkerLog.e(TAG, "printLoadResult: ERROR_LOAD_PATCH_VERSION_RESOURCE_MD5_MISMATCH");
             return;
         }
 
