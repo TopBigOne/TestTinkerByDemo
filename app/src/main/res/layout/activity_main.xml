@@ -6,18 +6,47 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sample patch!"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:text="@string/start_ymn_hot_fix"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_load_patch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="100dp"
+        android:text="load patch"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_load_library"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_load_patch"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="219dp"
+        android:layout_marginTop="44dp"
+        android:text="@string/load_library"
         android:textAllCaps="false" />
 
     <Button
         android:id="@+id/requestPatch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="204dp"
+        android:layout_marginTop="100dp"
         android:text="request patch"
         android:textAllCaps="false" />
 
@@ -27,6 +56,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/requestPatch"
         android:layout_alignParentStart="true"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="38dp"
         android:text="request config"
         android:textAllCaps="false" />
 
@@ -36,6 +67,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/requestConfig"
         android:layout_alignParentStart="true"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="38dp"
         android:text="clean patch"
         android:textAllCaps="false" />
 
@@ -45,6 +78,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/cleanPatch"
         android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="234dp"
+        android:layout_marginTop="-45dp"
         android:text="kill self"
         android:textAllCaps="false" />
 
