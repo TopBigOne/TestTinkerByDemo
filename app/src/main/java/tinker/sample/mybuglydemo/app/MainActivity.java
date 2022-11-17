@@ -71,12 +71,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnLoadLibrary.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //                testHotRealEnable();
-            }
-        });
 
         //immediately 为 true, 每次强制访问服务器更新
         requestPatchButton.setOnClickListener(new View.OnClickListener() {
@@ -130,11 +124,18 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        btnLoadLibrary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                testHotRealEnable();
+            }
+        });
     }
 
     private void testHotRealEnable() {
         Log.d(TAG, "testHotRealEnable:  -----1:package Name : " + getPackageName());
-        Log.d(TAG, "testHotRealEnable:  -----2");
+      //  Log.d(TAG, "testHotRealEnable:  -----2");
     }
 
     private void askForRequiredPermissions() {
