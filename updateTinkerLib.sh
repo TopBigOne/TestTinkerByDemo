@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-rm -rf ~/.gradle/caches/modules-2/metadata-2.16/descriptors/com.tencent.tinker
+#rm -rf ~/.gradle/caches/modules-2/metadata-2.16/descriptors/com.tencent.tinker
 
 #rm -rf ~/.m2/repository/com/tencent/tinker
 
