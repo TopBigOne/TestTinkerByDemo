@@ -317,6 +317,8 @@ public class SampleTinkerReport {
             case ShareConstants.TYPE_INTERPRET_OK:
                 reporter.onReport(KEY_LOADED_INTERPRET_TYPE_INTERPRET_OK);
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + type);
         }
     }
 

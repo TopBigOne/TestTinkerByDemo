@@ -19,8 +19,11 @@ package tinker.sample.mybuglydemo.reporter;
 import android.content.Context;
 import android.os.Looper;
 import android.os.MessageQueue;
+import android.util.DisplayMetrics;
+import android.util.Log;
 
 import com.tencent.tinker.lib.reporter.DefaultLoadReporter;
+import com.tencent.tinker.lib.util.TinkerLog;
 import com.tencent.tinker.lib.util.UpgradePatchRetry;
 import com.tencent.tinker.loader.shareutil.ShareConstants;
 
@@ -47,11 +50,12 @@ public class SampleLoadReporter extends DefaultLoadReporter {
     @Override
     public void onLoadResult(File patchDirectory, int loadCode, long cost) {
         super.onLoadResult(patchDirectory, loadCode, cost);
-        switch (loadCode) {
-            case ShareConstants.ERROR_LOAD_OK:
-                SampleTinkerReport.onLoaded(cost);
-                break;
+        TinkerLog.d(TAG, "onLoadResult: loadCode :" + loadCode + ", cost time : " + cost);
+        printLoadResult(patchDirectory, loadCode, cost);
+        if (loadCode == ShareConstants.ERROR_LOAD_OK) {
+            SampleTinkerReport.onLoaded(cost);
         }
+
         Looper.getMainLooper().myQueue().addIdleHandler(new MessageQueue.IdleHandler() {
             @Override
             public boolean queueIdle() {
@@ -61,6 +65,31 @@ public class SampleLoadReporter extends DefaultLoadReporter {
                 return false;
             }
         });
+
+
+    }
+
+    private void printLoadResult(File patchDirectory, int loadCode, long cost) {
+        TinkerLog.d(TAG, "printLoadResult: loadCode : " + loadCode + ", cost time : " + cost);
+        if (loadCode == ShareConstants.ERROR_LOAD_OK) {
+            TinkerLog.d(TAG, "printLoadResult: ERROR_LOAD_OK");
+            return;
+        }
+        if (loadCode == ShareConstants.ERROR_LOAD_DISABLE) {
+            TinkerLog.e(TAG, "printLoadResult: ERROR_LOAD_DISABLE");
+            return;
+        }
+
+        if (loadCode == ShareConstants.ERROR_LOAD_PATCH_INFO_NOT_EXIST) {
+            TinkerLog.e(TAG, "printLoadResult: ERROR_LOAD_PATCH_INFO_NOT_EXIST");
+            return;
+        }
+        if (loadCode == ShareConstants.ERROR_LOAD_PATCH_DIRECTORY_NOT_EXIST) {
+            TinkerLog.e(TAG, "printLoadResult: ERROR_LOAD_PATCH_DIRECTORY_NOT_EXIST");
+            return;
+        }
+
+
     }
 
     @Override

@@ -1,7 +1,12 @@
 package tinker.sample.mybuglydemo.app;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -19,6 +24,7 @@ import java.util.Objects;
 
 import tinker.sample.mybuglydemo.BuildConfig;
 import tinker.sample.mybuglydemo.R;
+import tinker.sample.mybuglydemo.util.Utils;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Tinker.MainActivity";
@@ -32,12 +38,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Log.d(TAG, "onCreate:  -----:package Name : "+getPackageName());
         setContentView(R.layout.activity_main);
         initView();
         Log.e(TAG, "i am on onCreate classloader:" + Objects.requireNonNull(MainActivity.class.getClassLoader()));
         //test resource change
         Log.e(TAG, "i am on onCreate string:" + getResources().getString(R.string.test_resource));
         initEvent();
+
+        askForRequiredPermissions();
     }
 
     private void initView() {
@@ -113,8 +123,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void testHotRealEnable() {
-        Log.d(TAG, "testHotRealEnable:  -----1");
+        Log.d(TAG, "testHotRealEnable:  -----1:package Name : "+getPackageName());
         Log.d(TAG, "testHotRealEnable:  -----2");
+    }
+
+    private void askForRequiredPermissions() {
+        if (Build.VERSION.SDK_INT < 23) {
+            return;
+        }
+        if (!hasRequiredPermissions()) {
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
+        }
+    }
+
+    private boolean hasRequiredPermissions() {
+        if (Build.VERSION.SDK_INT >= 16) {
+            final int res = ContextCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE);
+            return res == PackageManager.PERMISSION_GRANTED;
+        } else {
+            // When SDK_INT is below 16, READ_EXTERNAL_STORAGE will also be granted if WRITE_EXTERNAL_STORAGE is granted.
+            final int res = ContextCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            return res == PackageManager.PERMISSION_GRANTED;
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Utils.setBackground(true);
     }
 
 
