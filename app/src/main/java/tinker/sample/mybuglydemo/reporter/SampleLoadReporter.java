@@ -98,7 +98,6 @@ public class SampleLoadReporter extends DefaultLoadReporter {
             return;
         }
 
-
     }
 
     @Override

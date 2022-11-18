@@ -3,4 +3,5 @@
 
 #rm -rf ~/.m2/repository/com/tencent/tinker
 
-adb push ./app/build/outputs/apk/tinkerPatch/debug/patch_signed_7zip.apk /sdcard/
+#adb push ./app/build/outputs/apk/tinkerPatch/debug/patch_signed_7zip.apk /sdcard/
+adb push ./app/build/outputs/apk/tinkerPatch/debug/patch_signed_7zip.apk /data/user/0/com.bf.hot.ymn.fix/tinker/
