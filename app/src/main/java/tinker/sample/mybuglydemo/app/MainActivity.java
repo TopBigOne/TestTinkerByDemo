@@ -12,6 +12,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.tencent.tinker.lib.tinker.TinkerInstaller;
 import com.tencent.tinker.lib.util.TinkerLog;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnLoadPatch;
     Button btnLoadLibrary;
     Button btnShowInfo;
+    Button btnHotFixOne;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         cleanPatchButton = (Button) findViewById(R.id.cleanPatch);
         killSelfButton = (Button) findViewById(R.id.killSelf);
         btnShowInfo = (Button) findViewById(R.id.btn_show_info);
+        btnHotFixOne = (Button) findViewById(R.id.btn_new_view_one);
     }
 
     private void initEvent() {
@@ -129,6 +132,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 testHotRealEnable();
+            }
+        });
+
+        btnHotFixOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "this msg is added by hot fixed.", Toast.LENGTH_LONG).show();
             }
         });
     }
