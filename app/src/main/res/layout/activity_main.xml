@@ -96,19 +96,18 @@
         android:text="show info"
         android:textAllCaps="false" />
 
-     <Button
+    <Button
         android:id="@+id/btn_new_view_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_show_info"
+        android:layout_below="@+id/killSelf"
         android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="51dp"
-        android:layout_marginTop="14dp"
-        android:text="added by hot fix"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="36dp"
+        android:layout_toEndOf="@+id/btn_show_info"
+        android:background="#37882E"
+        android:text="added by hot fix-2"
         android:textAllCaps="false" />
-
-
 
 
 </RelativeLayout>
